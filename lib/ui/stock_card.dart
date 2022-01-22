@@ -14,20 +14,22 @@ Widget stockCard(BuildContext context, Stock stock) {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Row(
+          ExpansionTile(
+            initiallyExpanded: true,
+            tilePadding : EdgeInsets.zero,
+            title: Text(
+              stock.stockName.toUpperCase(),
+              style: StockTheme.darkTextTheme.headline2,
+            ),
             children: [
-              Text(
-                stock.stockName.toUpperCase(),
-                style: StockTheme.darkTextTheme.headline2,
-              ),
+              cardRow(PRICE, stock.price.toString()),
+              cardRow(DAY_GAIN,
+                  '${stock.lastPrice} - ${(stock.lastPrice + stock.dayGain).toStringAsFixed(2)}'),
+              cardRow(LAST_TRADE, formattedHour(stock.lastTrade)),
+              cardRow(EXTENDED_HRS, formattedHour(stock.extendedHours)),
+              percentChangeRow(calculatePercent(stock)),
             ],
           ),
-          cardRow(PRICE, stock.price.toString()),
-          cardRow(DAY_GAIN,
-              '${stock.lastPrice} - ${(stock.lastPrice + stock.dayGain).toStringAsFixed(2)}'),
-          cardRow(LAST_TRADE, formattedHour(stock.lastTrade)),
-          cardRow(EXTENDED_HRS, formattedHour(stock.extendedHours)),
-          percentChangeRow(calculatePercent(stock)),
         ],
       ),
     ),

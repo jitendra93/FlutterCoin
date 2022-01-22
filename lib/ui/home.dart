@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:validus/StockTheme.dart';
 import 'package:validus/constants.dart';
 import 'package:validus/ui/profile_screen.dart';
 import 'package:validus/ui/stock_screen.dart';
